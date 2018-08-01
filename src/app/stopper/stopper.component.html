@@ -1,7 +1,11 @@
-<p >{{hour}}:{{minute}}:{{second}}</p>
-<button (click)="start()">start</button>
-<button (click)="stop()">stop</button>
-<button (click)="reset()">reset</button>
-<button (click)="add()">köridő</button>
 
-<p *ngFor="let time of times">{{time.hour}}:{{time.minute}}:{{time.second}}</p>
+<div *ngFor="let stop of stoppers; let i=index">
+  <p >{{stop.hour}}:{{stop.minute}}:{{stop.second}}</p>
+  <button (click)="start(i)">start</button>
+  <button (click)="stop(i)">stop</button>
+  <button (click)="reset(i)">reset</button>
+  <button (click)="add(i)">köridő</button>
+
+  <p *ngFor="let time of stop.times">{{time.hour}}:{{time.minute}}:{{time.second}}</p>
+</div>
+<button (click)="new()">új</button>

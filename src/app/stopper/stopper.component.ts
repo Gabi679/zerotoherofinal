@@ -19,54 +19,86 @@ export class StopperComponent implements OnInit {
    times = [{
      
    }]
+   stoppers=[
+     {
+      lastSecond:0,
+      lastMinute:0,
+      lastHour:0,
+      second: 0,
+      minute: 0,
+      hour: 0,
+      id: setInterval(() => {
+        this.myTimer(0);
+    }, 1000),
+    times : [{
+     
+    }]
+   }]
   ngOnInit() {
 
     
   }
 
-  myTimer() {
-    this.timeGoes();
+  myTimer(stopper) {
+    this.timeGoes(stopper);
   }
 
-  timeGoes(){
-    this.second++;
-    if(this.second==60){
-      this.minute++;
-      this.second=0;
+  timeGoes(stopper){
+    this.stoppers[stopper].second++;
+    if(this.stoppers[stopper].second==60){
+      this.stoppers[stopper].minute++;
+      this.stoppers[stopper].second=0;
     }
-    if(this.minute==60){
-      this.hour++;
-      this.minute=0;
+    if(this.stoppers[stopper].minute==60){
+      this.stoppers[stopper].hour++;
+      this.stoppers[stopper].minute=0;
     }
   }
-  start(){
-    this.id= setInterval(() => {
-      this.myTimer();
+  start(stopper){
+    this.stoppers[stopper].id= setInterval(() => {
+      this.myTimer(stopper);
   }, 1000);
   }
 
-  stop(){
-    clearInterval(this.id)
+  stop(stopper){
+    clearInterval(this.stoppers[stopper].id)
   }
 
-  reset(){
-    this.stop();
-    this.hour=0;
-    this.minute=0;
-    this.second=0;
+  reset(stopper){
+    this.stop(stopper);
+    this.stoppers[stopper].hour=0;
+    this.stoppers[stopper].minute=0;
+    this.stoppers[stopper].second=0;
   }
 
-  add(){
-    this.times.push(
+  add(stopper){
+    this.stoppers[stopper].times.push(
       {
-        second: this.second-this.lastSecond,
-        minute: this.minute-this.lastMinute,
-        hour: this.hour-this.lastMinute,
+        second: this.stoppers[stopper].second-this.stoppers[stopper].lastSecond,
+        minute: this.stoppers[stopper].minute-this.stoppers[stopper].lastMinute,
+        hour: this.stoppers[stopper].hour-this.stoppers[stopper].lastMinute,
       }
     )
-    this.lastHour=this.hour;
-    this.lastMinute=this.minute;
-    this.lastSecond=this.second;
+    this.stoppers[stopper].lastHour=this.stoppers[stopper].hour;
+    this.stoppers[stopper].lastMinute=this.stoppers[stopper].minute;
+    this.stoppers[stopper].lastSecond=this.stoppers[stopper].second;
+  }
+  new(){
+    this.stoppers.push({
+      lastSecond:0,
+      lastMinute:0,
+      lastHour:0,
+      second: 0,
+      minute: 0,
+      hour: 0,
+      id: setInterval(() => {
+        this.myTimer(0);
+    }, 1000),
+    times : [{
+     
+    }]
+    }
+    )
   }
 
 }
