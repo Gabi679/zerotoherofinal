@@ -43,4 +43,11 @@ export class StopperComponent implements OnInit {
     clearInterval(this.id)
   }
 
+  reset(){
+    this.stop();
+    this.hour=0;
+    this.minute=0;
+    this.second=0;
+  }
+
 }
