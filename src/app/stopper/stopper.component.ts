@@ -9,6 +9,7 @@ export class StopperComponent implements OnInit {
   
   constructor() {
    }
+   theme='blue';
    second=0;
    minute=0;
    hour=0;
@@ -115,6 +116,16 @@ export class StopperComponent implements OnInit {
     this.stoppers[stopper].id = setInterval(() => {
       this.myTimer(0);
   }, actual)
+  }
+
+  blue(){
+    this.theme='blue';
+  }
+  red(){
+    this.theme='red';
+  }
+  night(){
+    this.theme='night';
   }
 
 }

@@ -1,4 +1,7 @@
-
+<div [ngClass]="theme">
+<button (click)="blue()">kék</button>
+<button (click)="red()">piros</button>
+<button (click)="night()">night</button>
 <div *ngFor="let stop of stoppers; let i=index">
   <p >{{stop.hour}}:{{stop.minute}}:{{stop.second}}</p>
   <button (click)="start(i)">start</button>
@@ -10,3 +13,4 @@
   <p *ngFor="let time of stop.times">{{time.hour}}:{{time.minute}}:{{time.second}}</p>
 </div>
 <button (click)="new()">új</button>
+</div>
