@@ -2,3 +2,6 @@
 <button (click)="start()">start</button>
 <button (click)="stop()">stop</button>
 <button (click)="reset()">reset</button>
+<button (click)="add()">köridő</button>
+
+<p *ngFor="let time of times">{{time.hour}}:{{time.minute}}:{{time.second}}</p>

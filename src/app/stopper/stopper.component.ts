@@ -13,6 +13,12 @@ export class StopperComponent implements OnInit {
    minute=0;
    hour=0;
    id;
+   lastSecond=0;
+   lastMinute=0;
+   lastHour=0;
+   times = [{
+     
+   }]
   ngOnInit() {
 
     
@@ -48,6 +54,19 @@ export class StopperComponent implements OnInit {
     this.hour=0;
     this.minute=0;
     this.second=0;
+  }
+
+  add(){
+    this.times.push(
+      {
+        second: this.second-this.lastSecond,
+        minute: this.minute-this.lastMinute,
+        hour: this.hour-this.lastMinute,
+      }
+    )
+    this.lastHour=this.hour;
+    this.lastMinute=this.minute;
+    this.lastSecond=this.second;
   }
 
 }
