@@ -5,7 +5,8 @@
   <button (click)="stop(i)">stop</button>
   <button (click)="reset(i)">reset</button>
   <button (click)="add(i)">köridő</button>
-
+  <button (click)="faster(i)">+</button>
+  <button (click)="slower(i)">-</button>
   <p *ngFor="let time of stop.times">{{time.hour}}:{{time.minute}}:{{time.second}}</p>
 </div>
 <button (click)="new()">új</button>

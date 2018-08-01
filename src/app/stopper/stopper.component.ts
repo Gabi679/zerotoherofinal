@@ -21,6 +21,7 @@ export class StopperComponent implements OnInit {
    }]
    stoppers=[
      {
+      interval: 1000,
       lastSecond:0,
       lastMinute:0,
       lastHour:0,
@@ -85,6 +86,7 @@ export class StopperComponent implements OnInit {
   }
   new(){
     this.stoppers.push({
+      interval:1000,
       lastSecond:0,
       lastMinute:0,
       lastHour:0,
@@ -99,6 +101,20 @@ export class StopperComponent implements OnInit {
     }]
     }
     )
+  }
+
+  faster(stopper){
+    let actual=this.stoppers[stopper].interval/2;
+    this.stoppers[stopper].id = setInterval(() => {
+      this.myTimer(0);
+  }, actual)
+  }
+
+  slower(stopper){
+    let actual=this.stoppers[stopper].interval*2;
+    this.stoppers[stopper].id = setInterval(() => {
+      this.myTimer(0);
+  }, actual)
   }
 
 }
